@@ -1,0 +1,380 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("Bloom-wallpaper-Light-1536x960.jpg");
+    background-size: cover;
+    background-position: top;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    height: 100vh;
+}
+*{
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.486) rgba(255, 255, 255, 0.027);
+}
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.103);
+    backdrop-filter: blur(50px);
+}
+
+.modal-content {
+    background-color: #4045754b;
+    backdrop-filter: blur(200px);
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #88888885;
+    border-top: 1px solid rgb(0, 255, 242);
+    border-left: 1px solid rgb(0, 225, 255);
+    width: 300px;
+    text-align: center;
+    border-radius: 8px;
+    color: white;
+}
+
+.modal-content input {
+    width: 80%;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}
+
+.chat-container {
+    width: 100%;
+    background-color: #4d060600;
+    height: 100vh;
+}
+
+.chat-header {
+    box-shadow: 0px 5px 20px rgb(89, 89, 89);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(145deg, rgb(0, 204, 255), rgb(255, 0, 140));
+    backdrop-filter: blur(100px);
+    color: #fff;
+    font-size: 2vh;
+    h1{
+        margin-left: 1vh;
+    }
+}
+
+.message-list {                         
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255, 255, 255) rgba(0, 0, 0, 0);
+    background-position: center;
+    background-size: cover;
+    flex-grow: 1;
+    padding: 15px;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 78.5vh;
+    scroll-behavior: smooth;
+}
+
+.message-input-container {
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+}
+#messageInput {
+    width: 100%;
+    height: 100%;
+    padding: 1vh;   
+    align-content: center;
+    box-sizing: border-box;
+    border: 1px solid #353535;
+    resize: none; /* Запретить изменение размера */
+    background-color: rgba(0, 0, 0, 0.788);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 3vh;
+    font-family: 'Courier New', Courier, monospace;
+    outline: none;
+}
+
+#messageInput::placeholder {
+    color: white;
+}
+#sendMessageButton:hover {
+    background-color: #0056b3;
+}
+
+.dark-mode {
+    background-color: #181818;
+    color: #f1f1f1;
+    background-image: url("Bloom-wallpaper-Dark-1536x960.jpg");
+}
+#sendMessageButton{
+    border: none;
+    padding: 0 2vh;
+    height: 100%;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 4vh;
+}
+#sendMessageButton:active{
+    color: black;
+}
+#scrollDownButton{
+    border: none;
+    padding: 0 1vh;
+    height: 100%;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 3vh;
+    border-left: 0.2vh solid white;
+}
+#scrollDownButton:active{
+    color: black;
+}
+#scrollDownButton:hover {
+    background-color: #0056b3;
+}
+
+.dark-mode .chat-header {
+    background-color: #272727bd;
+    background: linear-gradient(145deg, rgb(0, 21, 255), rgb(221, 0, 0));
+    backdrop-filter: blur(100px);
+}
+
+.dark-mode .message-input-container {
+    background-color: #00000000;
+}
+
+.dark-mode .message-input-container input {
+    background-color: #444;
+    border-color: #555;
+    color: #f1f1f1;
+}
+
+.dark-mode .message-input-container button {
+    background-color: #444;
+}
+
+.dark-mode .message-input-container button:hover {
+    background-color: #222;
+}
+
+.dark-mode .message {
+    background-color: #434343b0;
+    color: #f1f1f1;
+    box-shadow: -5px 5px 5px rgb(180, 234, 255);
+}
+
+.dark-mode .message.user {
+    box-shadow: 5px 5px 5px rgb(249, 162, 255);
+    background-color: #61007fc3;
+}
+.message {
+    max-width: 75%;
+    padding: 10px;
+    border-radius: 10px 10px 10px 0px;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    border-left: 1px solid rgb(255, 255, 255);
+    box-shadow: -5px 5px 5px rgb(0, 71, 134);
+    background-color: #e4faff9a;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    position: relative; /* Для позиционирования кнопки удаления */
+    align-self: flex-start;
+    backdrop-filter: blur(10px);
+}
+.susername{
+    background-color: #00000074;
+    padding: 1px 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 255, 128);
+    color: white;
+    line-height: 30px;
+}
+
+.message.user {
+    border-radius: 10px 10px 0px 10px;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    border-right: 1px solid rgb(255, 255, 255);
+    border-left: none;
+    box-shadow: 5px 5px 5px rgb(93, 0, 109);
+    background-color: #8400ffa9;
+    backdrop-filter: blur(10px);
+    color: #fff;
+    align-self: flex-end;
+}
+
+.message .delete-button {
+    background-color: #00a2ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    margin: auto;
+    margin: 3px;
+}
+
+.message .delete-button:hover {
+    background-color: #008bcc;
+}
+/* Стили для форматированного текста */
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.code-block {
+    background-color: #1d1d1d;
+    border-radius: 4px;
+    padding: 10px;
+    overflow: hidden;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: white;
+    img{
+        width: 50vw;
+        height: 90%;
+    }
+}
+.copy-button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 0px 4px;
+    cursor: pointer;
+    margin-left: 4px;
+    font-size: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0;
+}
+.message-text {
+    font-weight: 600;
+}
+.notification {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.copy-button:hover {
+    background-color: #313131;
+}
+
+.copy-button:active {
+    transform: scale(0.95);
+}
+
+
+@media (max-width:512px){
+    .modal-content{
+        margin: 40% auto;
+        padding: 20px;
+        align-content: center;
+    }
+    #messageInput{
+        height: 100%;
+        font-family: sans-serif;
+        font-size: 5vw;
+    }
+    .chat-header{
+        font-size: 3.5vw;
+    }
+    #sendMessageButton{
+        font-size: 5vw;
+    }
+    #scrollDownButton{
+        font-size: 4vw;
+    }
+    .message-input-container{
+        height: 6.5vh;
+    }
+    .message-list{
+        height: 74.5vh;
+    }
+}
+/* Добавьте это в ваш CSS */
+.message img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+#darkModeToggle{
+    right: 1vh;
+    background-color: #000000b6;
+    color: #fff;
+    padding: 1vh;
+    border-radius: 1vh;
+    font-size: 2vh;
+    cursor: pointer;
+    border: none;
+    margin-right: 1vw;
+}
+.togelBtn{
+    right: 1vh;
+    background-color: #000000b6;
+    color: #fff;
+    padding: 1vh;
+    border-radius: 1vh;
+    font-size: 2vh;
+    cursor: pointer;
+    border: none;
+}
+#darkModeToggle:active{
+    transform: scale(1.2);
+}
+.togelBtn:active{
+    transform: scale(1.2);
+}
+.replyedText{
+    border-radius: 5px;
+    background-color: rgba(21, 0, 49, 0.486);
+    padding: 5px;
+    color: white;
+    margin-bottom: 5px;
+    h3{
+        text-align: center;
+        border-radius: 5px;
+        font-size: 20px;
+        background-color: rgba(0, 0, 0, 0.658);
+        color: white;
+    }
+}
