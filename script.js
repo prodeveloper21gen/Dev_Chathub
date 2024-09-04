@@ -297,6 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 `}
             `;
             messageList.appendChild(messageElement);
+            messageList.queryselector(".reply-button").innerHTML = "reply";
         } else {
             updateMessageInDOM(message);
         }
