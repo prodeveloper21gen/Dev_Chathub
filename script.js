@@ -291,13 +291,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="message-text">${formatText(message.text)}</span>
                 <br><small>${new Date(message.timestamp).toDateString()} | ${new Date(message.timestamp).toLocaleTimeString()}</small>
                 ${message.username === username ? `
-                    <button class="delete-button" data-id="${message.id}">✕</button>
+                    <button class="delete-button" data-id="${message.id}">⨯</button>
+                    <button class="reply-button" data-text="${message.text.replaceAll('<','').replaceAll('>','')}" data-username="${message.username}">↩</button>
                 ` : `
-                    <button class="reply-button" data-text="${message.text}" data-username="${message.username}">Ответить</button>
+                    <button class="reply-button" data-text="${message.text.replaceAll('<','').replaceAll('>','')}" data-username="${message.username}">↩</button>
                 `}
             `;
             messageList.appendChild(messageElement);
-            messageList.queryselector(".reply-button").innerHTML = "reply";
+            // we must to change empty the value of atribute data-text of the reply-button
+
+            document.querySelector('.reply-button').innerHTML = '↩';
+            console.log(document.querySelector('.reply-button').innerHTML);
+            
         } else {
             updateMessageInDOM(message);
         }
