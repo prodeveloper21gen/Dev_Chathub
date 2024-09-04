@@ -379,8 +379,3 @@ body {
         color: white;
     }
 }
-@media (max-height: 468px) {
-    .message-list{
-        height: 68vh;
-    }
-}
