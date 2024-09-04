@@ -7,7 +7,6 @@ body {
     padding: 0;
     color: #333;
     height: 100vh;
-    overflow: hidden;
 }
 *{
     scroll-behavior: smooth;
@@ -236,7 +235,7 @@ body {
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 4px 8px;
     margin: 5px;
     cursor: pointer;
     margin: auto;
@@ -256,7 +255,7 @@ body {
 }
 
 .code-block {
-    background-color: #1d1d1d;
+    background-color: #0c0022b6;
     border-radius: 4px;
     padding: 10px;
     overflow: hidden;
@@ -377,5 +376,10 @@ body {
         font-size: 20px;
         background-color: rgba(0, 0, 0, 0.658);
         color: white;
+    }
+}
+@media (max-height: 468px) {
+    .message-list{
+        height: 68vh;
     }
 }
