@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (lastMessageTimestamp) {
-                    const newMessages = allMessages.filter(message => new Date(message.timestamp) > new Date(lastMessageTimestamp));
+                    const newMessages = allMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
                     if (newMessages.length > 0) {
                         playNotificationSound();
                         newMessages.forEach(message => showNotification(`Новое сообщение от ${message.username}: ${message.text}`));
