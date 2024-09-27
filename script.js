@@ -213,33 +213,37 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    function loadMessages() {
-        fetch(Avatar)
-            .then(response => response.json())
-            .then(data => {
-                messageList.innerHTML = "";
+function loadMessages() {
+    fetch(Avatar)
+        .then(response => response.json())
+        .then(data => {
+            messageList.innerHTML = "";
 
-                const allMessages = data.flatMap(user => user.messages);
-                allMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+            const allMessages = data.flatMap(user => user.messages);
+            // Сортируем сообщения по времени
+            allMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
-                allMessages.forEach(message => {
-                    displayMessage(message);
-                });
+            // Проверяем наличие новых сообщений
+            allMessages.forEach(message => {
+                displayMessage(message);
+            });
 
-                if (lastMessageTimestamp) {
-                    const newMessages = allMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-                    if (newMessages.length > 0) {
-                        playNotificationSound();
-                        newMessages.forEach(message => showNotification(`Новое сообщение от ${message.username}: ${message.text}`));
-                    }
+            // Если есть новые сообщения, воспроизводим звук уведомления
+            if (lastMessageTimestamp) {
+                const newMessages = allMessages.filter(message => new Date(message.timestamp) > new Date(lastMessageTimestamp));
+                if (newMessages.length > 0) {
+                    playNotificationSound();
+                    newMessages.forEach(message => showNotification(`Новое сообщение от ${message.username}: ${message.text}`));
                 }
+            }
 
-                if (allMessages.length > 0) {
-                    lastMessageTimestamp = allMessages[allMessages.length - 1].timestamp;
-                }
-            })
-            .catch(error => console.error("Ошибка загрузки сообщений:", error));
-    }
+            // Обновляем временную метку последнего сообщения
+            if (allMessages.length > 0) {
+                lastMessageTimestamp = allMessages[allMessages.length - 1].timestamp;
+            }
+        })
+        .catch(error => console.error("Ошибка загрузки сообщений:", error));
+}
 
     // Функция для добавления форматирования
     function applyFormatting(startTag, endTag) {
